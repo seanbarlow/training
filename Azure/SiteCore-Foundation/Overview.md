@@ -4,6 +4,15 @@
 
 [Microsoft Naming Conventions](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions)
 
+### Recommendations
+
+1. Only use lower case
+   
+| Name            | Format                         |
+| --------------- | ------------------------------ |
+| Resource Groups | [Application]-[Environment]-rg |
+|Web App|[Name]-[Environment]
+
 ## Tagging
 
 Recommended Tags
