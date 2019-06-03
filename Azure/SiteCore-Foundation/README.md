@@ -1,4 +1,4 @@
-# SitCore Azure Foundation
+# SiteCore Azure Foundation
 
 This module gives an overview of the key Azure Services on a typical SiteCore PaaS implementation.
 
