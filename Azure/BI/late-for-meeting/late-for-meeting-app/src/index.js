@@ -5,7 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <h1>Hello, world!</h1>,
+    <header className="App-header">
+        Late for Meeting?
+    </header>,
     document.getElementById('root')
   );
 //ReactDOM.render(element, document.getElementById('root'));
