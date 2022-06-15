@@ -1,0 +1,9 @@
+{
+	"name": "sb-demo-df",
+	"location": "southcentralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9bba4678-89fa-473c-9fe0-cc79eb3238e4",
+		"tenantId": "052eb64f-2625-4572-a928-5e7d322291f1"
+	}
+}
