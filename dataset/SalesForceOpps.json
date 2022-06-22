@@ -1,0 +1,19 @@
+{
+	"name": "SalesForceOpps",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sbdemostorageservice",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "raw"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
