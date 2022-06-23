@@ -10,12 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "validated",
-				"folderPath": {
-					"value": "@utcnow()",
-					"type": "Expression"
-				},
-				"fileSystem": "validated"
+				"fileName": "Opportunity.parquet",
+				"fileSystem": "raw"
 			},
 			"compressionCodec": "snappy"
 		},

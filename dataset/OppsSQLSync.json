@@ -1,0 +1,15 @@
+{
+	"name": "OppsSQLSync",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "StreamlineDB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "Opportunities"
+		}
+	}
+}
