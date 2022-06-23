@@ -9,7 +9,8 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "Opportunities"
+			"schema": "",
+			"table": "Opportunities"
 		}
 	}
 }
