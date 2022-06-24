@@ -20,13 +20,14 @@
 						"readBehavior": "query"
 					},
 					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+						"type": "AzureSqlSink",
+						"writeBehavior": "upsert",
+						"upsertSettings": {
+							"useTempDB": true
 						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -40,7 +41,7 @@
 								"sink": {
 									"name": "Id",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -51,7 +52,7 @@
 								"sink": {
 									"name": "IsDeleted",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -62,7 +63,7 @@
 								"sink": {
 									"name": "AccountId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -73,7 +74,7 @@
 								"sink": {
 									"name": "RecordTypeId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -84,7 +85,7 @@
 								"sink": {
 									"name": "IsPrivate",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -95,7 +96,7 @@
 								"sink": {
 									"name": "Name",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -106,7 +107,7 @@
 								"sink": {
 									"name": "Description",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -117,7 +118,7 @@
 								"sink": {
 									"name": "StageName",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -128,7 +129,7 @@
 								"sink": {
 									"name": "Amount",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -139,7 +140,7 @@
 								"sink": {
 									"name": "Probability",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -150,7 +151,7 @@
 								"sink": {
 									"name": "ExpectedRevenue",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -161,7 +162,7 @@
 								"sink": {
 									"name": "CloseDate",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -172,7 +173,7 @@
 								"sink": {
 									"name": "Type",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -183,7 +184,7 @@
 								"sink": {
 									"name": "NextStep",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -194,7 +195,7 @@
 								"sink": {
 									"name": "LeadSource",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -205,7 +206,7 @@
 								"sink": {
 									"name": "IsClosed",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -216,7 +217,7 @@
 								"sink": {
 									"name": "IsWon",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -227,7 +228,7 @@
 								"sink": {
 									"name": "ForecastCategory",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -238,7 +239,7 @@
 								"sink": {
 									"name": "ForecastCategoryName",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -249,7 +250,7 @@
 								"sink": {
 									"name": "CurrencyIsoCode",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -260,7 +261,7 @@
 								"sink": {
 									"name": "CampaignId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -271,7 +272,7 @@
 								"sink": {
 									"name": "HasOpportunityLineItem",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -282,7 +283,7 @@
 								"sink": {
 									"name": "Pricebook2Id",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -293,7 +294,7 @@
 								"sink": {
 									"name": "OwnerId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -304,7 +305,7 @@
 								"sink": {
 									"name": "CreatedDate",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -315,7 +316,7 @@
 								"sink": {
 									"name": "CreatedById",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -326,7 +327,7 @@
 								"sink": {
 									"name": "LastModifiedDate",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -337,7 +338,7 @@
 								"sink": {
 									"name": "LastModifiedById",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -348,7 +349,7 @@
 								"sink": {
 									"name": "SystemModstamp",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -359,7 +360,7 @@
 								"sink": {
 									"name": "LastActivityDate",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -370,7 +371,7 @@
 								"sink": {
 									"name": "PushCount",
 									"type": "Int32",
-									"physicalType": "INT_32"
+									"physicalType": "Int32"
 								}
 							},
 							{
@@ -381,7 +382,7 @@
 								"sink": {
 									"name": "LastStageChangeDate",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -392,7 +393,7 @@
 								"sink": {
 									"name": "FiscalQuarter",
 									"type": "Int32",
-									"physicalType": "INT_32"
+									"physicalType": "Int32"
 								}
 							},
 							{
@@ -403,7 +404,7 @@
 								"sink": {
 									"name": "FiscalYear",
 									"type": "Int32",
-									"physicalType": "INT_32"
+									"physicalType": "Int32"
 								}
 							},
 							{
@@ -414,7 +415,7 @@
 								"sink": {
 									"name": "Fiscal",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -425,7 +426,7 @@
 								"sink": {
 									"name": "ContactId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -436,7 +437,7 @@
 								"sink": {
 									"name": "LastViewedDate",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -447,7 +448,7 @@
 								"sink": {
 									"name": "LastReferencedDate",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -458,7 +459,7 @@
 								"sink": {
 									"name": "SyncedQuoteId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -469,7 +470,7 @@
 								"sink": {
 									"name": "ContractId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -480,7 +481,7 @@
 								"sink": {
 									"name": "HasOpenActivity",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -491,7 +492,7 @@
 								"sink": {
 									"name": "HasOverdueTask",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -502,7 +503,7 @@
 								"sink": {
 									"name": "LastAmountChangedHistoryId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -513,7 +514,7 @@
 								"sink": {
 									"name": "LastCloseDateChangedHistoryId",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -524,7 +525,7 @@
 								"sink": {
 									"name": "Budget_Confirmed__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -535,7 +536,7 @@
 								"sink": {
 									"name": "Discovery_Completed__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -546,7 +547,7 @@
 								"sink": {
 									"name": "ROI_Analysis_Completed__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -557,7 +558,7 @@
 								"sink": {
 									"name": "Scan_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -568,7 +569,7 @@
 								"sink": {
 									"name": "Loss_Reason__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -579,7 +580,7 @@
 								"sink": {
 									"name": "Scan_Client_Contact__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -590,7 +591,7 @@
 								"sink": {
 									"name": "Scan_Notes__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -601,7 +602,7 @@
 								"sink": {
 									"name": "Solution_Practice__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -612,7 +613,7 @@
 								"sink": {
 									"name": "Solution_Area__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -623,7 +624,7 @@
 								"sink": {
 									"name": "Workshop__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -634,7 +635,7 @@
 								"sink": {
 									"name": "Assessment__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -645,7 +646,7 @@
 								"sink": {
 									"name": "Quick_Start__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -656,7 +657,7 @@
 								"sink": {
 									"name": "Foundation__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -667,7 +668,7 @@
 								"sink": {
 									"name": "Engagement__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -678,7 +679,7 @@
 								"sink": {
 									"name": "Other__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -689,7 +690,7 @@
 								"sink": {
 									"name": "Scan_3Cloud_Contact__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -700,7 +701,7 @@
 								"sink": {
 									"name": "Scan_Survey_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -711,7 +712,7 @@
 								"sink": {
 									"name": "Scan_Last_Health_Check__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -722,7 +723,7 @@
 								"sink": {
 									"name": "Account_Owner__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -733,7 +734,7 @@
 								"sink": {
 									"name": "Scan_Deployment_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -744,7 +745,7 @@
 								"sink": {
 									"name": "Scan_Microsoft_Contact__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -755,7 +756,7 @@
 								"sink": {
 									"name": "ACE_Client_Readout_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -766,7 +767,7 @@
 								"sink": {
 									"name": "Solution_Brief_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -777,7 +778,7 @@
 								"sink": {
 									"name": "SOW_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -788,7 +789,7 @@
 								"sink": {
 									"name": "Scan_Expiration_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -799,7 +800,7 @@
 								"sink": {
 									"name": "Does_scan_need_a_workshop__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -810,7 +811,7 @@
 								"sink": {
 									"name": "Workshop_Site_Type__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -821,7 +822,7 @@
 								"sink": {
 									"name": "Workshop_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -832,7 +833,7 @@
 								"sink": {
 									"name": "Workshop_Start_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -843,7 +844,7 @@
 								"sink": {
 									"name": "Workshop_Resource_Coverage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -854,7 +855,7 @@
 								"sink": {
 									"name": "Workshop_Lunch_Coverage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -865,7 +866,7 @@
 								"sink": {
 									"name": "Workshop_Dress_Code__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -876,7 +877,7 @@
 								"sink": {
 									"name": "Project_Name__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -887,7 +888,7 @@
 								"sink": {
 									"name": "Workshop_Location__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -898,7 +899,7 @@
 								"sink": {
 									"name": "Workshop_require_Solution_Brief__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -909,7 +910,7 @@
 								"sink": {
 									"name": "Project_Start_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -920,7 +921,7 @@
 								"sink": {
 									"name": "MSA_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -931,7 +932,7 @@
 								"sink": {
 									"name": "CSP_Addendum_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -942,7 +943,7 @@
 								"sink": {
 									"name": "MSP_Addendum_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -953,7 +954,7 @@
 								"sink": {
 									"name": "Tech_Lead__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -964,7 +965,7 @@
 								"sink": {
 									"name": "X3Cloud_Participant__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -975,7 +976,7 @@
 								"sink": {
 									"name": "Scan_Stage_Changed_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -986,7 +987,7 @@
 								"sink": {
 									"name": "Scan_Stage_Duration__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -997,7 +998,7 @@
 								"sink": {
 									"name": "Networking_Prescription__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1008,7 +1009,7 @@
 								"sink": {
 									"name": "Payment_Received_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1019,7 +1020,7 @@
 								"sink": {
 									"name": "Engagement_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1030,7 +1031,7 @@
 								"sink": {
 									"name": "Survey_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1041,7 +1042,7 @@
 								"sink": {
 									"name": "Check_in_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1052,7 +1053,7 @@
 								"sink": {
 									"name": "Scan_Download_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1063,7 +1064,7 @@
 								"sink": {
 									"name": "Overall_Account_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1074,7 +1075,7 @@
 								"sink": {
 									"name": "Scan_Download_Notes__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1085,7 +1086,7 @@
 								"sink": {
 									"name": "MSFT_Funding_Available__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1096,7 +1097,7 @@
 								"sink": {
 									"name": "Days_in_Solution_Brief_Stage__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1107,7 +1108,7 @@
 								"sink": {
 									"name": "MSFT_Funding_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1118,7 +1119,7 @@
 								"sink": {
 									"name": "Solution_Brief_Stage_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1129,7 +1130,7 @@
 								"sink": {
 									"name": "SOW_Stage_Changed_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1140,7 +1141,7 @@
 								"sink": {
 									"name": "Days_in_SOW_Stage__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1151,7 +1152,7 @@
 								"sink": {
 									"name": "Relationship_with_MSFT_Account_Team__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1162,7 +1163,7 @@
 								"sink": {
 									"name": "Solution_Offering__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1173,7 +1174,7 @@
 								"sink": {
 									"name": "Relationship_with_MSFT_Acct_Team_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1184,7 +1185,7 @@
 								"sink": {
 									"name": "Budget_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1195,7 +1196,7 @@
 								"sink": {
 									"name": "Budget_Status_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1206,7 +1207,7 @@
 								"sink": {
 									"name": "Signing_Authority_Relationship_w_3Cloud__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1217,7 +1218,7 @@
 								"sink": {
 									"name": "Signing_Authority_Relationship_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1228,7 +1229,7 @@
 								"sink": {
 									"name": "Signing_Process_Captured__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1239,7 +1240,7 @@
 								"sink": {
 									"name": "Signing_Process_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1250,7 +1251,7 @@
 								"sink": {
 									"name": "Needs_Pain_Goals_Criteria_captured__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1261,7 +1262,7 @@
 								"sink": {
 									"name": "Needs_Pain_Goals_Criteria_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1272,7 +1273,7 @@
 								"sink": {
 									"name": "X3_Key_Decision_Criteria_Captured__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1283,7 +1284,7 @@
 								"sink": {
 									"name": "Decision_Criteria_Captured_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1294,7 +1295,7 @@
 								"sink": {
 									"name": "Timeline_Captured_from_Client__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1305,7 +1306,7 @@
 								"sink": {
 									"name": "Timeline_Captured_from_Client_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1316,7 +1317,7 @@
 								"sink": {
 									"name": "Competitive_Pursuit__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1327,7 +1328,7 @@
 								"sink": {
 									"name": "Competitive_Pursuit_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1338,7 +1339,7 @@
 								"sink": {
 									"name": "Opportunity_Score__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1349,7 +1350,7 @@
 								"sink": {
 									"name": "Opportunity_Grade__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1360,7 +1361,7 @@
 								"sink": {
 									"name": "ARC_Deployment_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1371,7 +1372,7 @@
 								"sink": {
 									"name": "MSFT_ACE_Readout_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1382,7 +1383,7 @@
 								"sink": {
 									"name": "pse__Forecast_Curve__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1393,7 +1394,7 @@
 								"sink": {
 									"name": "pse__Group__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1404,7 +1405,7 @@
 								"sink": {
 									"name": "pse__IsParentOpportunityServices__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1415,7 +1416,7 @@
 								"sink": {
 									"name": "pse__Is_Change_Request__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1426,7 +1427,7 @@
 								"sink": {
 									"name": "pse__Is_Services_Opportunity__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1437,7 +1438,7 @@
 								"sink": {
 									"name": "pse__Parent_Opportunity__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1448,7 +1449,7 @@
 								"sink": {
 									"name": "pse__Practice__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1459,7 +1460,7 @@
 								"sink": {
 									"name": "pse__PreBilledAmount__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1470,7 +1471,7 @@
 								"sink": {
 									"name": "pse__Pre_Billed_Amount__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1481,7 +1482,7 @@
 								"sink": {
 									"name": "pse__Primary_Project__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1492,7 +1493,7 @@
 								"sink": {
 									"name": "pse__Rate_Card_Discount_Limit__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1503,7 +1504,7 @@
 								"sink": {
 									"name": "pse__Rate_Card_Percentage_Discount__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1514,7 +1515,7 @@
 								"sink": {
 									"name": "pse__Rate_Card_Set__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1525,7 +1526,7 @@
 								"sink": {
 									"name": "pse__Region__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1536,7 +1537,7 @@
 								"sink": {
 									"name": "pse__Services_Attached_Percent_From_Products__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1547,7 +1548,7 @@
 								"sink": {
 									"name": "pse__Services_Attached_From_Products__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1558,7 +1559,7 @@
 								"sink": {
 									"name": "Scan_Interest_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1569,7 +1570,7 @@
 								"sink": {
 									"name": "Kick_off_Call_Sched_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1580,7 +1581,7 @@
 								"sink": {
 									"name": "Kick_off_Call_Complete_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1591,7 +1592,7 @@
 								"sink": {
 									"name": "Funding_Approved_date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1602,7 +1603,7 @@
 								"sink": {
 									"name": "SOW_Pending_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1613,7 +1614,7 @@
 								"sink": {
 									"name": "SOW_Approved_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1624,7 +1625,7 @@
 								"sink": {
 									"name": "Scanning_in_Progress_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1635,7 +1636,7 @@
 								"sink": {
 									"name": "Draft_ACE_Needed_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1646,7 +1647,7 @@
 								"sink": {
 									"name": "Draft_ACE_Complete_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1657,7 +1658,7 @@
 								"sink": {
 									"name": "MSFT_Close_out_call_Sched_date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1668,7 +1669,7 @@
 								"sink": {
 									"name": "MSFT_close_out_call_complete_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1679,7 +1680,7 @@
 								"sink": {
 									"name": "Submit_for_Payment_date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1690,7 +1691,7 @@
 								"sink": {
 									"name": "Validating_Payment_date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1701,7 +1702,7 @@
 								"sink": {
 									"name": "Payment_Approved_date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1712,7 +1713,7 @@
 								"sink": {
 									"name": "Application_Assessment__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1723,7 +1724,7 @@
 								"sink": {
 									"name": "Migration_Plan_Engagement__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1734,7 +1735,7 @@
 								"sink": {
 									"name": "Optimization_Assessment__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1745,7 +1746,7 @@
 								"sink": {
 									"name": "Workspot__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1756,7 +1757,7 @@
 								"sink": {
 									"name": "Forecast_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1767,7 +1768,7 @@
 								"sink": {
 									"name": "Forecast_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1778,7 +1779,7 @@
 								"sink": {
 									"name": "Upside__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1789,7 +1790,7 @@
 								"sink": {
 									"name": "Upside_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1800,7 +1801,7 @@
 								"sink": {
 									"name": "Forecast_Notes__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1811,7 +1812,7 @@
 								"sink": {
 									"name": "Legacy_ID__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1822,7 +1823,7 @@
 								"sink": {
 									"name": "Solution_Director__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1833,7 +1834,7 @@
 								"sink": {
 									"name": "Closed_Lost_Description__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1844,7 +1845,7 @@
 								"sink": {
 									"name": "Main_Opportunity__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1855,7 +1856,7 @@
 								"sink": {
 									"name": "PO__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1866,7 +1867,7 @@
 								"sink": {
 									"name": "Project_Sponsor__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1877,7 +1878,7 @@
 								"sink": {
 									"name": "Account_Name2__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1888,7 +1889,7 @@
 								"sink": {
 									"name": "Account__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1899,7 +1900,7 @@
 								"sink": {
 									"name": "Closed_Won_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1910,7 +1911,7 @@
 								"sink": {
 									"name": "Microsoft_Consulting_Services__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -1921,7 +1922,7 @@
 								"sink": {
 									"name": "Closed_Won_Forecast_Amount__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1932,7 +1933,7 @@
 								"sink": {
 									"name": "Customer_Contact__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1943,7 +1944,7 @@
 								"sink": {
 									"name": "Forecast_Amount__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1954,7 +1955,7 @@
 								"sink": {
 									"name": "Forecast_Close_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1965,7 +1966,7 @@
 								"sink": {
 									"name": "Forecast_Lock_Amount__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -1976,7 +1977,7 @@
 								"sink": {
 									"name": "Forecast_Lock_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -1987,7 +1988,7 @@
 								"sink": {
 									"name": "Forecast_Lock_Notes__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -1998,7 +1999,7 @@
 								"sink": {
 									"name": "Forecast_Lock_Stage__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2009,7 +2010,7 @@
 								"sink": {
 									"name": "MSA_Does_Not_Expire__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2020,7 +2021,7 @@
 								"sink": {
 									"name": "MSA_Expiration_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2031,7 +2032,7 @@
 								"sink": {
 									"name": "Blocked__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2042,7 +2043,7 @@
 								"sink": {
 									"name": "Monthly_Recurring_Re__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -2053,7 +2054,7 @@
 								"sink": {
 									"name": "Pushed_Lost_Amount__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -2064,7 +2065,7 @@
 								"sink": {
 									"name": "Term_in_months__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -2075,7 +2076,7 @@
 								"sink": {
 									"name": "Upside_Lock_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2086,7 +2087,7 @@
 								"sink": {
 									"name": "Upside_Lock_State__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2097,7 +2098,7 @@
 								"sink": {
 									"name": "VP_Sales__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2108,7 +2109,7 @@
 								"sink": {
 									"name": "Ready_to_be_Assigned__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2119,7 +2120,7 @@
 								"sink": {
 									"name": "SA_Blocked__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2130,7 +2131,7 @@
 								"sink": {
 									"name": "SA_Client_Proposal_Review_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2141,7 +2142,7 @@
 								"sink": {
 									"name": "SA_Client_Proposal_Review_Presentation_D__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2152,7 +2153,7 @@
 								"sink": {
 									"name": "SA_Client_SOW_Review_Due_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2163,7 +2164,7 @@
 								"sink": {
 									"name": "SA_Client_SOW_Review_Presentation_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2174,7 +2175,7 @@
 								"sink": {
 									"name": "SA_Completed_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2185,7 +2186,7 @@
 								"sink": {
 									"name": "SA_Internal_Proposal_Review_Due_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2196,7 +2197,7 @@
 								"sink": {
 									"name": "SA_Internal_SOW_Review_Due_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2207,7 +2208,7 @@
 								"sink": {
 									"name": "SA_Priority__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2218,7 +2219,7 @@
 								"sink": {
 									"name": "SA_Proposal_Draft_Due_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2229,7 +2230,7 @@
 								"sink": {
 									"name": "SA_SOW_Draft_Due_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2240,7 +2241,7 @@
 								"sink": {
 									"name": "SA_Scoping_Due_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2251,7 +2252,7 @@
 								"sink": {
 									"name": "SA_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2262,7 +2263,7 @@
 								"sink": {
 									"name": "SA_Status_is_Null__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2273,7 +2274,7 @@
 								"sink": {
 									"name": "Secondary_Solution_Director__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2284,7 +2285,7 @@
 								"sink": {
 									"name": "Logged_In_Opp_Owners_Opportunities__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2295,7 +2296,7 @@
 								"sink": {
 									"name": "Project_is_Active__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2306,7 +2307,7 @@
 								"sink": {
 									"name": "Expected_Margin__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -2317,7 +2318,7 @@
 								"sink": {
 									"name": "TCV__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -2328,7 +2329,7 @@
 								"sink": {
 									"name": "Test_Pushed_Lost__c",
 									"type": "Decimal",
-									"physicalType": "DECIMAL"
+									"physicalType": "Decimal"
 								}
 							},
 							{
@@ -2339,7 +2340,7 @@
 								"sink": {
 									"name": "Forecast_Date_Auto_Update__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2350,7 +2351,7 @@
 								"sink": {
 									"name": "Microsoft_Contact__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2361,7 +2362,7 @@
 								"sink": {
 									"name": "Renewal__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2372,7 +2373,7 @@
 								"sink": {
 									"name": "Confidence_Level__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2383,7 +2384,7 @@
 								"sink": {
 									"name": "Sales_Region__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2394,7 +2395,7 @@
 								"sink": {
 									"name": "Polaris_Opp__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2405,7 +2406,7 @@
 								"sink": {
 									"name": "Color__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2416,7 +2417,7 @@
 								"sink": {
 									"name": "Country__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2427,7 +2428,7 @@
 								"sink": {
 									"name": "Audit__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2438,7 +2439,7 @@
 								"sink": {
 									"name": "How_can_Microsoft_help__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2449,7 +2450,7 @@
 								"sink": {
 									"name": "Microsoft_CRM_Identifier__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2460,7 +2461,7 @@
 								"sink": {
 									"name": "Referral_Identifier__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2471,7 +2472,7 @@
 								"sink": {
 									"name": "Referral_Link__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2482,7 +2483,7 @@
 								"sink": {
 									"name": "Referral_Program__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2493,7 +2494,7 @@
 								"sink": {
 									"name": "Referral_visible_to_Microsoft_sellers__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2504,7 +2505,7 @@
 								"sink": {
 									"name": "Due_Date__c",
 									"type": "DateTime",
-									"physicalType": "INT_96"
+									"physicalType": "DateTime"
 								}
 							},
 							{
@@ -2515,7 +2516,7 @@
 								"sink": {
 									"name": "VP_of_Sales__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2526,7 +2527,7 @@
 								"sink": {
 									"name": "Microsoft_Teams_Link__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2537,7 +2538,7 @@
 								"sink": {
 									"name": "Business_Case_ROI__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2548,7 +2549,7 @@
 								"sink": {
 									"name": "Generate_Renewal__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2559,7 +2560,7 @@
 								"sink": {
 									"name": "MSA_Status2__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2570,7 +2571,7 @@
 								"sink": {
 									"name": "Create_MSFT_Teams__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2581,7 +2582,7 @@
 								"sink": {
 									"name": "Buying_Process__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2592,7 +2593,7 @@
 								"sink": {
 									"name": "Contract_Type__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2603,7 +2604,7 @@
 								"sink": {
 									"name": "Current_State_Environment__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2614,7 +2615,7 @@
 								"sink": {
 									"name": "Decision_Criteria__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2625,7 +2626,7 @@
 								"sink": {
 									"name": "Desired_Future_State__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2636,7 +2637,7 @@
 								"sink": {
 									"name": "Impact_of_the_Problem_s__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2647,7 +2648,7 @@
 								"sink": {
 									"name": "Intrinsic_Motivators__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2658,7 +2659,7 @@
 								"sink": {
 									"name": "Problem_s_Identified__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2669,7 +2670,7 @@
 								"sink": {
 									"name": "QualifierTimeline_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2680,7 +2681,7 @@
 								"sink": {
 									"name": "Root_Cause__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2691,7 +2692,7 @@
 								"sink": {
 									"name": "CCG_Budget_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2702,7 +2703,7 @@
 								"sink": {
 									"name": "PSA_Project_Status__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2713,7 +2714,7 @@
 								"sink": {
 									"name": "Pursuit_Lead_Assigned__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2724,7 +2725,7 @@
 								"sink": {
 									"name": "Required_Reviews__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2735,7 +2736,7 @@
 								"sink": {
 									"name": "SOW_Signatory__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							},
 							{
@@ -2746,7 +2747,7 @@
 								"sink": {
 									"name": "Sales_Engineer_Assigned__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2757,7 +2758,7 @@
 								"sink": {
 									"name": "Pull_Forward__c",
 									"type": "Boolean",
-									"physicalType": "BOOLEAN"
+									"physicalType": "Boolean"
 								}
 							},
 							{
@@ -2768,7 +2769,7 @@
 								"sink": {
 									"name": "Referring_Contact__c",
 									"type": "String",
-									"physicalType": "UTF8"
+									"physicalType": "String"
 								}
 							}
 						],
@@ -2782,62 +2783,6 @@
 				"inputs": [
 					{
 						"referenceName": "SalesForce",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "SalesForceOpps",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "Move to SQL",
-				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "SalesForceOpps",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "ParquetSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						}
-					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "SalesForceOpps",
 						"type": "DatasetReference"
 					}
 				],
