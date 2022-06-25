@@ -1,16 +1,15 @@
 {
-	"name": "OppsSQLSync",
+	"name": "SalesforceAccounts",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "StreamlineDB",
+			"referenceName": "SalesForceConnection",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "AzureSqlTable",
+		"type": "SalesforceObject",
 		"schema": [],
 		"typeProperties": {
-			"schema": "dbo",
-			"table": "Opportunities"
+			"objectApiName": "Account"
 		}
 	}
 }

@@ -1,5 +1,5 @@
 {
-	"name": "OppsSQLSync",
+	"name": "SQLAccounts",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "StreamlineDB",
@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Opportunities"
+			"table": "Accounts"
 		}
 	}
 }
