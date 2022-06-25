@@ -1,0 +1,15 @@
+{
+	"name": "SalesforceUsers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SalesForceConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "User"
+		}
+	}
+}
